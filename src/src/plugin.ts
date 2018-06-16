@@ -12,4 +12,8 @@ export class CustomTabs implements ICustomTabsPlugin {
   ): void {
     CustomTabsPlugin.show(options, response);
   }
+
+  view(options: { url: string }): Promise<any> {
+    return CustomTabsPlugin.view(options);
+  }
 }

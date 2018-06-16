@@ -12,4 +12,6 @@ export interface ICustomTabsPlugin {
     },
     response?: Function
   ): void;
+
+  view(options: { url: string }): Promise<any>;
 }

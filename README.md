@@ -18,13 +18,17 @@ customTabs.show({url:'someUrl',customScheme:'customSchemeIfNeeded'},(data,err)=>
     // data contains the info used to start the app e.g data from fb callback
 });
 
+
+customTabs.view({url:'someExternalUrl'}).then().catch();
+
 ```
 
 ## Api
 
 | Method                                   | Default | Type                         | Description                                           |
 | ---------------------------------------- | ------- | ---------------------------- | ----------------------------------------------------- |
-| show(options: { url: string, customScheme: string }, response: Function) |         | `void`                     | Can be used to show a simple url or used for sso |
+| show(options: { url: string, customScheme: string }, response: Function) |         | `void`                     | Can be used for sso/oauth |
+| view(options: { url: string }) |         | `Promise<any>`                     | Can be used to view any url |
 
 ## Example Image
 
