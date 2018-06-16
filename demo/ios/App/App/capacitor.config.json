@@ -1,0 +1,6 @@
+{
+  "appId": "co.fitcom.customtabsdemo",
+  "appName": "CustomTabs",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
