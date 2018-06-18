@@ -1,6 +1,7 @@
 import Foundation
 import Capacitor
 import SafariServices
+//import AuthenticationServices
 
 
 let kSafariViewControllerCloseNotification = "kSafariViewControllerCloseNotification"
@@ -9,41 +10,58 @@ typealias JSObject = [String:Any]
 public class CustomTabsPlugin: CAPPlugin, SFSafariViewControllerDelegate {
     private var controller : SFSafariViewController?
     private var _call: CAPPluginCall?
-    public override func load() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.login(notification:)), name: NSNotification.Name(rawValue: kSafariViewControllerCloseNotification), object: nil)
-    }
-    
+    private var session: Any?
+
     @objc func show(_ call: CAPPluginCall) {
         let url = call.getString("url") ?? ""
-        _ = call.getString("customeScheme") ?? ""
+        let scheme = call.getString("customeScheme") ?? ""
         _call = call;
-        self.controller = SFSafariViewController(url: URL.init(string: url)!)
+        if #available(iOS 11.0, *) {
+            self.session = SFAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme,completionHandler: {callback,error in
+                if(error != nil){
+                    call.reject("")
+                }else{
+                    var obj = JSObject()
+                    obj["value"] = callback?.absoluteString
+                   call.success(obj)
+                }
+            })
+            (self.session as! SFAuthenticationSession ).start()
+       }else{
+           call.reject("Not supported")
+       }
+ //           else if #available(iOS 12.0, *) {
+//            self.session = ASWebAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme,completionHandler: {callback,error in
+//                if(error != nil){
+//                    call.reject("")
+//                }else{
+//                    var obj = JSObject()
+//                    obj["value"] = callback?.absoluteString
+//                    call.success(obj)
+//                }
+//            })
+//            (self.session as! ASWebAuthenticationSession ).start()
+//        }
+    }
+
+
+    @objc func view(_ call: CAPPluginCall) {
+        let url = call.getString("url") ?? ""
+        _call = call;
+        controller = SFSafariViewController(url:URL.init(string: url)!)
         controller?.delegate = self
-        self.bridge.viewController.present(self.controller!, animated: true) {
-            
+        DispatchQueue.main.async {
+            self.bridge.viewController.present(self.controller!, animated: true, completion: {
+
+            })
         }
     }
-    
-    
-    
+
     public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        
-    }
-    
-    @objc func login(notification: NSNotification) {
-        // get the url from the auth callback
-        let url = notification.object as! NSURL
-        var obj = JSObject()
-        obj["value"] = url
-        self._call?.success(obj)
-        self.controller!.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    func safariViewControllerDidFinish(controller: SFSafariViewController) {
-        controller.dismiss(animated: true) { () -> Void in
-            self._call?.error("cancel")
+        if(_call != nil){
+            self._call?.resolve()
         }
     }
-    
+
+
 }
