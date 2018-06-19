@@ -7,9 +7,10 @@ export class CustomTabsPluginWeb extends WebPlugin implements ICustomTabsPlugin 
       console.log(options);
     });
   }
-  show(options: { url: string; customScheme?: string; },response?: Function): void{
-    console.log(options);
-    console.log(response)
+  show(options: { url: string; customScheme?: string; }): Promise<{value:string}>{
+      return new Promise(()=>{
+          console.log(options);
+      });
   }
   constructor() {
     super({

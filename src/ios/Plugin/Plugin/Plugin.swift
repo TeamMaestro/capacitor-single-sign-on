@@ -14,7 +14,7 @@ public class CustomTabsPlugin: CAPPlugin, SFSafariViewControllerDelegate {
 
     @objc func show(_ call: CAPPluginCall) {
         let url = call.getString("url") ?? ""
-        let scheme = call.getString("customeScheme") ?? ""
+        let scheme = call.getString("customScheme") ?? ""
         _call = call;
         if #available(iOS 11.0, *) {
             self.session = SFAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme,completionHandler: {callback,error in
@@ -23,7 +23,7 @@ public class CustomTabsPlugin: CAPPlugin, SFSafariViewControllerDelegate {
                 }else{
                     var obj = JSObject()
                     obj["value"] = callback?.absoluteString
-                   call.success(obj)
+                   call.resolve(obj)
                 }
             })
             (self.session as! SFAuthenticationSession ).start()
@@ -37,7 +37,7 @@ public class CustomTabsPlugin: CAPPlugin, SFSafariViewControllerDelegate {
 //                }else{
 //                    var obj = JSObject()
 //                    obj["value"] = callback?.absoluteString
-//                    call.success(obj)
+//                    call.resolve(obj)
 //                }
 //            })
 //            (self.session as! ASWebAuthenticationSession ).start()

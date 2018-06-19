@@ -5,3 +5,4 @@ src/ios/Plugin/Pods/
 demo/android/app/src/main/assets
 src/dist
 src/android/capacitor-custom-tabs/build
+.idea

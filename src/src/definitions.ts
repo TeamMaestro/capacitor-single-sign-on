@@ -9,9 +9,8 @@ export interface ICustomTabsPlugin {
     options: {
       url: string;
       customScheme?: string;
-    },
-    response?: Function
-  ): void;
+    }
+  ): Promise<{value: string}>;
 
   view(options: { url: string }): Promise<any>;
 }

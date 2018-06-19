@@ -24,22 +24,24 @@ public class CustomTabsPlugin extends Plugin {
     private CustomTabsIntent intent;
     private static String mScheme;
     private static PluginCall mCall;
-    private static Uri mData;
+
     @Override
     protected void handleOnResume() {
         super.handleOnResume();
-        mData = getActivity().getIntent().getData();
         if(mCall != null){
-           getBridge().saveCall(mCall);
+            Uri data = getActivity().getIntent().getData();
+            saveCall(mCall);
             String scheme = "";
-            if(mData != null){
-                scheme = mData.getScheme();
+            if(data != null){
+                scheme = data.getScheme();
             }
+
             if (mCall != null && scheme.equals(mScheme)) {
-                if (mData != null) {
+                if (data != null) {
                     JSObject obj = new JSObject();
-                    obj.put("value" ,mData.toString());
-                    mCall.success(obj);
+                    obj.put("value" , data.toString());
+                    getSavedCall().resolve(obj);
+                    mCall = null;
                 }
             }
         }
@@ -74,9 +76,7 @@ public class CustomTabsPlugin extends Plugin {
     }
 
 
-    @PluginMethod(
-            returnType = PluginMethod.RETURN_CALLBACK
-    )
+    @PluginMethod()
     public void show(final PluginCall call) {
         String url = call.getString("url");
         mCall = call;
@@ -110,4 +110,11 @@ public class CustomTabsPlugin extends Plugin {
         intent = builder.build();
         intent.launchUrl(this.getContext(), Uri.parse(url));
     }
+
+    @PluginMethod()
+    public void view(final PluginCall call) {
+        show(call);
+    }
+
+
 }

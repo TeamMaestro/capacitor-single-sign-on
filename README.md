@@ -14,9 +14,9 @@
 import { CustomTabs } from 'capacitor-custom-tabs';
 const customTabs = new CustomTabs();
 
-customTabs.show({url:'someUrl',customScheme:'customSchemeIfNeeded'},(data,err)=>{
-    // data contains the info used to start the app e.g data from fb callback
-});
+customTabs.show({url:'someUrl',customScheme:'customSchemeIfNeeded'}).then(data=>{
+// data contains the info used to start the app e.g data from fb callback
+}).catch(err=>{})
 
 
 customTabs.view({url:'someExternalUrl'}).then().catch();
@@ -27,7 +27,7 @@ customTabs.view({url:'someExternalUrl'}).then().catch();
 
 | Method                                   | Default | Type                         | Description                                           |
 | ---------------------------------------- | ------- | ---------------------------- | ----------------------------------------------------- |
-| show(options: { url: string, customScheme: string }, response: Function) |         | `void`                     | Can be used for sso/oauth |
+| show(options: { url: string, customScheme: string }) |         | `Promise<{value:string}>`                     | Can be used for sso/oauth |
 | view(options: { url: string }) |         | `Promise<any>`                     | Can be used to view any url |
 
 ## Example Image

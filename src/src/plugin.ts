@@ -7,10 +7,9 @@ export class CustomTabs implements ICustomTabsPlugin {
     options: {
       url: string;
       customScheme?: string;
-    },
-    response: Function
-  ): void {
-    CustomTabsPlugin.show(options, response);
+    }
+  ):Promise<{value:string}>  {
+    return CustomTabsPlugin.show(options);
   }
 
   view(options: { url: string }): Promise<any> {
