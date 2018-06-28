@@ -1,7 +1,7 @@
 
   Pod::Spec.new do |s|
     s.name = 'CapacitorCustomTabs'
-    s.version = '0.0.5'
+    s.version = '0.0.6'
     s.summary = 'Custom tabs'
     s.license = 'MIT'
     s.homepage = 'https://github.com/triniwiz/capacitor-custom-tabs'

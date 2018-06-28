@@ -1,6 +1,7 @@
 package co.fitcom.customtabs;
 
 import android.content.ComponentName;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.customtabs.CustomTabsCallback;
@@ -15,38 +16,21 @@ import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 
+import net.openid.appauth.AuthorizationRequest;
+import net.openid.appauth.AuthorizationService;
+import net.openid.appauth.AuthorizationServiceConfiguration;
+import net.openid.appauth.ResponseTypeValues;
 
-@NativePlugin()
+
+@NativePlugin(
+        requestCodes = {CustomTabsPlugin.SSO_REQUEST}
+)
 public class CustomTabsPlugin extends Plugin {
+    public static final int SSO_REQUEST = 868;
     private CustomTabsClient mCustomTabsClient;
     private static final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";
     private CustomTabsCallback callback;
     private CustomTabsIntent intent;
-    private static String mScheme;
-    private static PluginCall mCall;
-
-    @Override
-    protected void handleOnResume() {
-        super.handleOnResume();
-        if(mCall != null){
-            Uri data = getActivity().getIntent().getData();
-            saveCall(mCall);
-            String scheme = "";
-            if(data != null){
-                scheme = data.getScheme();
-            }
-
-            if (mCall != null && scheme.equals(mScheme)) {
-                if (data != null) {
-                    JSObject obj = new JSObject();
-                    obj.put("value" , data.toString());
-                    getSavedCall().resolve(obj);
-                    mCall = null;
-                }
-            }
-        }
-    }
-
 
     @Override
     public void load() {
@@ -75,12 +59,46 @@ public class CustomTabsPlugin extends Plugin {
         return intent;
     }
 
+    @Override
+    protected void handleOnActivityResult(int requestCode, int resultCode, Intent data) {
+        super.handleOnActivityResult(requestCode, resultCode, data);
+
+        PluginCall savedCall = getSavedCall();
+
+        if (savedCall == null) {
+            return;
+        }
+
+        if (requestCode == CustomTabsPlugin.SSO_REQUEST) {
+            Uri d = data.getData();
+            if (d != null) {
+                JSObject obj = new JSObject();
+                obj.put("value", d.toString());
+                savedCall.resolve(obj);
+            } else {
+                savedCall.reject("");
+            }
+
+        }
+    }
+
 
     @PluginMethod()
     public void show(final PluginCall call) {
         String url = call.getString("url");
-        mCall = call;
-        mScheme = call.getString("customScheme", "").replace("://","");
+        String scheme = call.getString("customScheme", "");
+        AuthorizationServiceConfiguration configuration = new AuthorizationServiceConfiguration(Uri.parse(url), Uri.parse(url));
+        AuthorizationRequest.Builder builder = new AuthorizationRequest.Builder(configuration, scheme.replace("://", ""), ResponseTypeValues.ID_TOKEN, Uri.parse(scheme));
+        AuthorizationRequest request = builder.build();
+
+        AuthorizationService authService = new AuthorizationService(this.getContext());
+        Intent authIntent = authService.getAuthorizationRequestIntent(request);
+        startActivityForResult(call, authIntent, CustomTabsPlugin.SSO_REQUEST);
+    }
+
+    @PluginMethod()
+    public void view(final PluginCall call) {
+        String url = call.getString("url");
         callback = new CustomTabsCallback() {
             @Override
             public void onNavigationEvent(int navigationEvent, Bundle e) {
@@ -104,16 +122,10 @@ public class CustomTabsPlugin extends Plugin {
             }
         };
 
-
         final CustomTabsSession session = mCustomTabsClient.newSession(getCallback());
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder(session);
         intent = builder.build();
         intent.launchUrl(this.getContext(), Uri.parse(url));
-    }
-
-    @PluginMethod()
-    public void view(final PluginCall call) {
-        show(call);
     }
 
 
