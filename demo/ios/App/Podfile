@@ -7,6 +7,6 @@ target 'App' do
   # Automatic Capacitor Pod dependencies, do not delete
   pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
   pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
-  pod 'CapacitorCustomTabs', :path => '../../node_modules/capacitor-custom-tabs'
+  pod 'CapacitorSingleSignon', :path => '../../node_modules/capacitor-single-signon'
   # Do not delete
 end

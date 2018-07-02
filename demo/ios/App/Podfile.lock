@@ -3,7 +3,7 @@ PODS:
     - CapacitorCordova (= 1.0.0-alpha.39)
     - GCDWebServer (~> 3.0)
   - CapacitorCordova (1.0.0-alpha.39)
-  - CapacitorCustomTabs (0.0.1):
+  - CapacitorSingleSignon (1.0.0):
     - Capacitor
   - GCDWebServer (3.4.2):
     - GCDWebServer/Core (= 3.4.2)
@@ -12,7 +12,7 @@ PODS:
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
-  - CapacitorCustomTabs (from `../../node_modules/capacitor-custom-tabs`)
+  - CapacitorSingleSignon (from `../../node_modules/capacitor-single-signon`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -23,15 +23,15 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
-  CapacitorCustomTabs:
-    :path: "../../node_modules/capacitor-custom-tabs"
+  CapacitorSingleSignon:
+    :path: "../../node_modules/capacitor-single-signon"
 
 SPEC CHECKSUMS:
   Capacitor: 694bd651f06ece975ddf33d78d012a0d0fbece57
   CapacitorCordova: 1ce96e3c67c9b90e850e563798255268c5a8984b
-  CapacitorCustomTabs: 56db6317368a6f0e8b660f2c5077be86a543cd5d
+  CapacitorSingleSignon: a130e92851be2f37d2c53c468e416bbb32d5bcfc
   GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
 
-PODFILE CHECKSUM: 9a3ff4f12e0e36471ba52af7b1ab658c522df66a
+PODFILE CHECKSUM: 98a8947b020fd0a337150f20d851208880d89cf6
 
 COCOAPODS: 1.5.3

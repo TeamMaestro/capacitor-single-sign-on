@@ -1,6 +1,6 @@
 {
-  "name": "capacitor-custom-tabs",
-  "version": "0.0.6",
+  "name": "capacitor-single-signon",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -22,7 +22,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorCustomTabs.podspec"
+    "CapacitorSingleSignon.podspec"
   ],
   "keywords": [
     "capacitor",

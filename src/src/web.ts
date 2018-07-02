@@ -1,12 +1,7 @@
 import { WebPlugin } from '@capacitor/core';
-import { ICustomTabsPlugin } from './definitions';
+import { ISingleSignOnPlugin } from './definitions';
 
-export class CustomTabsPluginWeb extends WebPlugin implements ICustomTabsPlugin {
-  view(options: { url: string; }): Promise<any> {
-    return new Promise(()=>{
-      console.log(options);
-    });
-  }
+export class SingleSignOnPluginWeb extends WebPlugin implements ISingleSignOnPlugin {
   show(options: { url: string; customScheme?: string; }): Promise<{value:string}>{
       return new Promise(()=>{
           console.log(options);
@@ -14,13 +9,13 @@ export class CustomTabsPluginWeb extends WebPlugin implements ICustomTabsPlugin 
   }
   constructor() {
     super({
-      name: 'CustomTabsPlugin',
+      name: 'SingleSignOnPlugin',
       platforms: ['web']
     });
   }
 
 }
 
-const CustomTabsPlugin = new CustomTabsPluginWeb();
+const SingleSignOnPlugin = new SingleSignOnPluginWeb();
 
-export { CustomTabsPlugin };
+export { SingleSignOnPlugin };

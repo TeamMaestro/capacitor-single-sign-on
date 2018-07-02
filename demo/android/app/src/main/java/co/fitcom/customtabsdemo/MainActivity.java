@@ -7,7 +7,7 @@ import com.getcapacitor.Plugin;
 
 import java.util.ArrayList;
 
-import co.fitcom.customtabs.CustomTabsPlugin;
+import co.fitcom.capacitor.SingleSignOnPlugin;
 
 public class MainActivity extends BridgeActivity {
   @Override
@@ -17,7 +17,7 @@ public class MainActivity extends BridgeActivity {
     // Initializes the Bridge
     this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
       // Additional plugins you've installed go here
-       add(CustomTabsPlugin.class);
+       add(SingleSignOnPlugin.class);
     }});
   }
 }

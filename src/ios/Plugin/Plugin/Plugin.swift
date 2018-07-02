@@ -1,21 +1,16 @@
 import Foundation
 import Capacitor
 import SafariServices
-//import AuthenticationServices
 
-
-let kSafariViewControllerCloseNotification = "kSafariViewControllerCloseNotification"
 typealias JSObject = [String:Any]
-@objc(CustomTabsPlugin)
-public class CustomTabsPlugin: CAPPlugin, SFSafariViewControllerDelegate {
-    private var controller : SFSafariViewController?
-    private var _call: CAPPluginCall?
+@objc(SingleSignOnPlugin)
+public class SingleSignOnPlugin: CAPPlugin, SFSafariViewControllerDelegate {
+
     private var session: Any?
 
     @objc func show(_ call: CAPPluginCall) {
         let url = call.getString("url") ?? ""
         let scheme = call.getString("customScheme") ?? ""
-        _call = call;
         if #available(iOS 11.0, *) {
             self.session = SFAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme,completionHandler: {callback,error in
                 if(error != nil){
@@ -43,25 +38,5 @@ public class CustomTabsPlugin: CAPPlugin, SFSafariViewControllerDelegate {
 //            (self.session as! ASWebAuthenticationSession ).start()
 //        }
     }
-
-
-    @objc func view(_ call: CAPPluginCall) {
-        let url = call.getString("url") ?? ""
-        _call = call;
-        controller = SFSafariViewController(url:URL.init(string: url)!)
-        controller?.delegate = self
-        DispatchQueue.main.async {
-            self.bridge.viewController.present(self.controller!, animated: true, completion: {
-
-            })
-        }
-    }
-
-    public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        if(_call != nil){
-            self._call?.resolve()
-        }
-    }
-
 
 }

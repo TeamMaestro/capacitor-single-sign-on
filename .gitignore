@@ -4,5 +4,5 @@ demo/dist
 src/ios/Plugin/Pods/
 demo/android/app/src/main/assets
 src/dist
-src/android/capacitor-custom-tabs/build
+src/android/capacitor-single-signon/build
 .idea
