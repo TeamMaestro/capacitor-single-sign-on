@@ -9,6 +9,9 @@
 
 ## Usage
 
+### iOS
+This supports iOS SDK version 11+ (Important). The build will fail on SDK version 10 and below. Make sure to set your custom scheme in the `Info.plist`
+
 ### Android
 
 Add the following to your Android.manifest
@@ -42,9 +45,9 @@ import { SingleSignOn } from 'capacitor-single-signon';
 const sso = new SingleSignOn();
 
 sso
-  .show({ url: 'someUrl', customScheme: 'customSchemeIfNeeded' })
-  .then(data => {
-    // data contains the info used to start the app e.g data from fb callback
+  .authenticate({ url: 'someUrl', customScheme: 'customSchemeIfNeeded' })
+  .then(response => {
+    // this response will contain your completion URL with all your authorization keys used from the oauth callback
   })
   .catch(err => {});
 ```
@@ -53,5 +56,5 @@ sso
 
 | Method                                               | Default | Type                      | Description                 |
 | ---------------------------------------------------- | ------- | ------------------------- | --------------------------- |
-| show(options: { url: string, customScheme: string }) |         | `Promise<{value:string}>` | Can be used for sso/oauth |
+| authenticate(options: { url: string, customScheme: string }) |         | `Promise<{url:string}>` | Can be used for sso/oauth |
 
