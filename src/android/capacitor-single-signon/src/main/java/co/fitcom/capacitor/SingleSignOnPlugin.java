@@ -26,11 +26,12 @@ public class SingleSignOnPlugin extends Plugin {
         }
 
         if (requestCode == SingleSignOnPlugin.SSO_REQUEST) {
-            Uri d = data.getData();
-            if (d != null) {
-                JSObject obj = new JSObject();
-                obj.put("value", d.toString());
-                savedCall.resolve(obj);
+            Uri url = data.getData();
+            if (url != null) {
+                JSObject response = new JSObject();
+                response.put("url", url.toString());
+
+                savedCall.resolve(response);
             } else {
                 savedCall.reject("");
             }
@@ -39,7 +40,7 @@ public class SingleSignOnPlugin extends Plugin {
     }
 
     @PluginMethod()
-    public void show(final PluginCall call) {
+    public void authenticate(final PluginCall call) {
         String url = call.getString("url");
         String scheme = call.getString("customScheme", "");
         AuthorizationServiceConfiguration configuration = new AuthorizationServiceConfiguration(Uri.parse(url),

@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-single-signon",
+  "name": "@teammaestro/capacitor-single-signon",
   "version": "1.0.0",
   "description": "",
   "main": "dist/esm/index.js",
@@ -10,7 +10,11 @@
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build"
   },
-  "author": "Osei Fortune",
+  "author": "TeamMaestro",
+  "contributors": [
+    "Osei Fortune",
+    "John Pinkster"
+  ],
   "license": "MIT",
   "dependencies": {
     "@capacitor/core": "latest"
@@ -27,7 +31,10 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "sso",
+    "single",
+    "signon"
   ],
   "capacitor": {
     "ios": {
@@ -39,9 +46,9 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/TeamMaestro/capacitor-single-sign-on"
   },
   "bugs": {
-    "url": "/issues"
+    "url": "https://github.com/TeamMaestro/capacitor-single-sign-on/issues"
   }
 }

@@ -1,14 +1,14 @@
 declare global {
-  interface PluginRegistry {
-    SingleSignOnPlugin?: ISingleSignOnPlugin;
-  }
+    interface PluginRegistry {
+        SingleSignOnPlugin?: ISingleSignOnPlugin;
+    }
 }
 
 export interface ISingleSignOnPlugin {
-  show(
-    options: {
-      url: string;
-      customScheme?: string;
-    }
-  ): Promise<{value: string}>;
+    authenticate(
+        options: {
+            url: string;
+            customScheme?: string;
+        }
+    ): Promise<{ url: string }>;
 }
