@@ -1,7 +1,7 @@
 {
   "name": "@teammaestro/capacitor-single-signon",
   "version": "1.0.1",
-  "description": "",
+  "description": "This plugin is designed to streamline the single signon process between android and ios",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {
@@ -27,7 +27,7 @@
     "dist/",
     "ios/",
     "android/",
-    "TeamMaestroCapacitorSingleSignon.podspec"
+    "TeammaestroCapacitorSingleSignon.podspec"
   ],
   "keywords": [
     "capacitor",
