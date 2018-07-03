@@ -23,10 +23,11 @@
     "typescript": "^2.6.2"
   },
   "files": [
+    "README.md",
     "dist/",
     "ios/",
     "android/",
-    "CapacitorSingleSignon.podspec"
+    "TeamMaestroCapacitorSingleSignon.podspec"
   ],
   "keywords": [
     "capacitor",

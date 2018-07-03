@@ -1,6 +1,6 @@
 
   Pod::Spec.new do |s|
-    s.name = 'CapacitorSingleSignon'
+    s.name = 'TeamMaestroCapacitorSingleSignon'
     s.version = '1.0.0'
     s.summary = 'Single SignOn'
     s.license = 'MIT'
