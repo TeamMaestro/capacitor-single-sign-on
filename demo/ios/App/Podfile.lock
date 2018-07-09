@@ -3,16 +3,16 @@ PODS:
     - CapacitorCordova (= 1.0.0-alpha.39)
     - GCDWebServer (~> 3.0)
   - CapacitorCordova (1.0.0-alpha.39)
-  - CapacitorSingleSignon (1.0.0):
-    - Capacitor
   - GCDWebServer (3.4.2):
     - GCDWebServer/Core (= 3.4.2)
   - GCDWebServer/Core (3.4.2)
+  - TeammaestroCapacitorSingleSignon (0.0.1):
+    - Capacitor
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
-  - CapacitorSingleSignon (from `../../node_modules/capacitor-single-signon`)
+  - "TeammaestroCapacitorSingleSignon (from `../../node_modules/@teammaestro/capacitor-single-signon`)"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -23,15 +23,15 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
-  CapacitorSingleSignon:
-    :path: "../../node_modules/capacitor-single-signon"
+  TeammaestroCapacitorSingleSignon:
+    :path: "../../node_modules/@teammaestro/capacitor-single-signon"
 
 SPEC CHECKSUMS:
   Capacitor: 694bd651f06ece975ddf33d78d012a0d0fbece57
   CapacitorCordova: 1ce96e3c67c9b90e850e563798255268c5a8984b
-  CapacitorSingleSignon: a130e92851be2f37d2c53c468e416bbb32d5bcfc
   GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
+  TeammaestroCapacitorSingleSignon: a1c4ec1f0a22f3f03fcb0304b559c16ecc732fb6
 
-PODFILE CHECKSUM: 98a8947b020fd0a337150f20d851208880d89cf6
+PODFILE CHECKSUM: 4e283c55b45fdac97f06f62d1fa97b5eff770e52
 
 COCOAPODS: 1.5.3
