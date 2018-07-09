@@ -1,11 +1,11 @@
 # Capacitor Single SignOn
 
-[![npm](https://img.shields.io/npm/v/capacitor-single-signon.svg)](https://www.npmjs.com/package/capacitor-single-signon)
-[![npm](https://img.shields.io/npm/dt/capacitor-single-signon.svg?label=npm%20downloads)](https://www.npmjs.com/package/capacitor-single-signon)
+[![npm](https://img.shields.io/npm/v/@teammaestro/capacitor-single-signon.svg)](https://www.npmjs.com/package/teammaestro/capacitor-single-signon)
+[![npm](https://img.shields.io/npm/dt/@teammaestro/capacitor-single-signon.svg?label=npm%20downloads)](https://www.npmjs.com/package/teammaestro/capacitor-single-signon)
 
 ## Installation
 
-- `npm i capacitor-single-signon`
+- `npm i @teammaestro/capacitor-single-signon`
 
 ## Usage
 
@@ -41,7 +41,7 @@ You will need to comment the default intent filter
 ```
 
 ```ts
-import { SingleSignOn } from 'capacitor-single-signon';
+import { SingleSignOn } from '@teammaestro/capacitor-single-signon';
 const sso = new SingleSignOn();
 
 sso
@@ -56,5 +56,5 @@ sso
 
 | Method                                               | Default | Type                      | Description                 |
 | ---------------------------------------------------- | ------- | ------------------------- | --------------------------- |
-| authenticate(options: { url: string, customScheme: string }) |         | `Promise<{url:string}>` | Can be used for sso/oauth |
+| authenticate(options: { url: string, customScheme: string }) |         | `Promise<{ url: string }>` | Can be used for sso/oauth |
 

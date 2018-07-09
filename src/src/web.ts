@@ -2,11 +2,12 @@ import { WebPlugin } from '@capacitor/core';
 import { ISingleSignOnPlugin } from './definitions';
 
 export class SingleSignOnPluginWeb extends WebPlugin implements ISingleSignOnPlugin {
-    authenticate(options: { url: string; customScheme?: string; }): Promise<{ url: string }> {
+    authenticate(options: { url: string; customScheme?: string; }): Promise<{ value: string }> {
         return new Promise(() => {
             console.log(options);
         });
     }
+
     constructor() {
         super({
             name: 'SingleSignOnPlugin',
