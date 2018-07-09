@@ -1,6 +1,7 @@
 import { Plugins } from '@capacitor/core';
 import { ISingleSignOnPlugin } from './definitions';
-const { SingleSignOnPlugin } = Plugins;
+
+const {SingleSignOnPlugin} = Plugins;
 
 export class SingleSignOn implements ISingleSignOnPlugin {
     authenticate(
@@ -8,7 +9,7 @@ export class SingleSignOn implements ISingleSignOnPlugin {
             url: string;
             customScheme?: string;
         }
-    ): Promise<{ url: string }> {
+    ): Promise<{ value: string }> {
         return SingleSignOnPlugin.authenticate(options);
     }
 }
