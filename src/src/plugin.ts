@@ -9,7 +9,7 @@ export class SingleSignOn implements ISingleSignOnPlugin {
             url: string;
             customScheme?: string;
         }
-    ): Promise<{ value: string }> {
+    ): Promise<{ url: string }> {
         return SingleSignOnPlugin.authenticate(options);
     }
 }
