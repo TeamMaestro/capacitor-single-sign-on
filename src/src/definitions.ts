@@ -10,5 +10,5 @@ export interface ISingleSignOnPlugin {
             url: string;
             customScheme?: string;
         }
-    ): Promise<{ value: string }>;
+    ): Promise<{ url: string }>;
 }
