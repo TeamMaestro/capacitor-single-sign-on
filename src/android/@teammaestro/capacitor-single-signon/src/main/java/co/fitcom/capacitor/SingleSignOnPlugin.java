@@ -1,5 +1,8 @@
 package co.fitcom.capacitor;
 
+import android.content.Intent;
+import android.net.Uri;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
@@ -50,7 +53,7 @@ public class SingleSignOnPlugin extends Plugin {
 
         AuthorizationService authService = new AuthorizationService(this.getContext());
         Intent authIntent = authService.getAuthorizationRequestIntent(request);
-        startActivityForResult(call, authIntent, CustomTabsPlugin.SSO_REQUEST);
+        startActivityForResult(call, authIntent, SingleSignOnPlugin.SSO_REQUEST);
     }
 
 }
