@@ -6,3 +6,4 @@ demo/android/app/src/main/assets
 src/dist
 src/android/@teammaestro/capacitor-single-signon/build
 .idea
+*.tgz
