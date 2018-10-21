@@ -10,7 +10,7 @@
 ## Usage
 
 ### iOS
-This supports iOS SDK version 11+ (Important). The build will fail on SDK version 10 and below. Make sure to set your custom scheme in the `Info.plist`
+This supports iOS SDK version 11+ (Important). The build will fail on SDK version 10 and below. Set the iOS `minVersion` in your `capacitor.config.json` to at least `11.0`. Also, make sure to set your custom scheme in the `Info.plist`.
 
 ### Android
 
@@ -41,15 +41,21 @@ You will need to comment the default intent filter
 ```
 
 ```ts
-import { SingleSignOn } from '@teammaestro/capacitor-single-signon';
-const sso = new SingleSignOn();
+import '@teammaestro/capacitor-single-signon';
 
-sso
-  .authenticate({ url: 'someUrl', customScheme: 'customSchemeIfNeeded' })
-  .then(response => {
+import { Plugins } from '@capacitor/core';
+const { SingleSignOn } = Plugins;
+
+try {
+    const response = await SingleSignOn.authenticate({
+        url: 'someUrl',
+        customScheme: 'customSchemeIfNeeded'
+    });
     // this response will contain your completion URL with all your authorization keys used from the oauth callback
-  })
-  .catch(err => {});
+    console.log(response.url);
+} catch (error) {
+    console.error(error);
+}
 ```
 
 ## Api
