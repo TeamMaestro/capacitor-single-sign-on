@@ -1,6 +1,6 @@
 {
-  "appId": "co.fitcom.customtabsdemo",
-  "appName": "CustomTabs",
-  "bundledWebRuntime": false,
-  "webDir": "www"
+    "appId": "com.ssodemo.app",
+    "appName": "SSO Demo",
+    "bundledWebRuntime": false,
+    "webDir": "www"
 }
