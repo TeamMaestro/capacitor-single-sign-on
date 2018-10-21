@@ -1,55 +1,56 @@
 {
-  "name": "@teammaestro/capacitor-single-signon",
-  "version": "1.0.3",
-  "description": "This plugin is designed to streamline the single signon process between android and ios",
-  "main": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
-  "scripts": {
-    "build": "npm run clean && tsc",
-    "clean": "rm -rf ./dist",
-    "watch": "tsc --watch",
-    "prepublishOnly": "npm run build"
-  },
-  "author": "TeamMaestro",
-  "contributors": [
-    "Osei Fortune",
-    "John Pinkster"
-  ],
-  "license": "MIT",
-  "dependencies": {
-    "@capacitor/core": "latest"
-  },
-  "devDependencies": {
-    "typescript": "^2.6.2"
-  },
-  "files": [
-    "README.md",
-    "dist/",
-    "ios/",
-    "android/",
-    "TeammaestroCapacitorSingleSignon.podspec"
-  ],
-  "keywords": [
-    "capacitor",
-    "plugin",
-    "native",
-    "sso",
-    "single",
-    "signon"
-  ],
-  "capacitor": {
-    "ios": {
-      "src": "ios"
+    "name": "@teammaestro/capacitor-single-signon",
+    "version": "1.0.3",
+    "description": "This plugin is designed to streamline the single signon process between android and ios",
+    "main": "dist/esm/index.js",
+    "types": "dist/esm/index.d.ts",
+    "scripts": {
+        "build": "npm run clean && tsc",
+        "clean": "rm -rf ./dist",
+        "watch": "tsc --watch",
+        "prepublishOnly": "npm run build"
     },
-    "android": {
-      "src": "android"
+    "author": "TeamMaestro",
+    "contributors": [
+        "Osei Fortune",
+        "John Pinkster",
+        "Sean Bannigan"
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "@capacitor/core": "latest"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.2"
+    },
+    "files": [
+        "README.md",
+        "dist/",
+        "ios/",
+        "android/",
+        "TeammaestroCapacitorSingleSignon.podspec"
+    ],
+    "keywords": [
+        "capacitor",
+        "plugin",
+        "native",
+        "sso",
+        "single",
+        "signon"
+    ],
+    "capacitor": {
+        "ios": {
+            "src": "ios"
+        },
+        "android": {
+            "src": "android"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TeamMaestro/capacitor-single-sign-on"
+    },
+    "bugs": {
+        "url": "https://github.com/TeamMaestro/capacitor-single-sign-on/issues"
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/TeamMaestro/capacitor-single-sign-on"
-  },
-  "bugs": {
-    "url": "https://github.com/TeamMaestro/capacitor-single-sign-on/issues"
-  }
 }
