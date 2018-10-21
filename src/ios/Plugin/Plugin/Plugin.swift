@@ -5,16 +5,17 @@ import AuthenticationServices
 
 typealias JSObject = [String:Any]
 @objc(SingleSignOnPlugin)
-public class SingleSignOnPlugin: CAPPlugin, SFSafariViewControllerDelegate {
+public class SingleSignOnPlugin: CAPPlugin {
 
     private var session: Any?
 
     @objc func authenticate(_ call: CAPPluginCall) {
         let url = call.getString("url") ?? ""
         let scheme = call.getString("customScheme") ?? ""
+        
         if #available(iOS 12.0, *) {
-            self.session = ASWebAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme,completionHandler: {url,error in
-                if(error != nil) {
+            self.session = ASWebAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme, completionHandler: { url, error in
+                if (error != nil) {
                     call.reject("")
                 }
                 else {
@@ -26,8 +27,8 @@ public class SingleSignOnPlugin: CAPPlugin, SFSafariViewControllerDelegate {
             (self.session as! ASWebAuthenticationSession).start()
         }
         else if #available(iOS 11.0, *) {
-            self.session = SFAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme,completionHandler: {url,error in
-                if(error != nil) {
+            self.session = SFAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme, completionHandler: { url, error in
+                if (error != nil) {
                     call.reject("")
                 }
                 else {
