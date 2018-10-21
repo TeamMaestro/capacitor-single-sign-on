@@ -1,4 +1,4 @@
-package co.fitcom.customtabsdemo;
+package com.ssodemo.app;
 
 import android.os.Bundle;
 
@@ -6,8 +6,6 @@ import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.Plugin;
 
 import java.util.ArrayList;
-
-import co.fitcom.capacitor.SingleSignOnPlugin;
 
 public class MainActivity extends BridgeActivity {
   @Override
@@ -17,7 +15,7 @@ public class MainActivity extends BridgeActivity {
     // Initializes the Bridge
     this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
       // Additional plugins you've installed go here
-       add(SingleSignOnPlugin.class);
+      // Ex: add(TotallyAwesomePlugin.class);
     }});
   }
 }
