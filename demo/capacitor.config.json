@@ -2,5 +2,8 @@
     "appId": "com.ssodemo.app",
     "appName": "SSO Demo",
     "bundledWebRuntime": false,
-    "webDir": "www"
+    "webDir": "www",
+    "ios": {
+        "minVersion": "11.0"
+    }
 }
