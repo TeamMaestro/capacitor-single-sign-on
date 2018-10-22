@@ -1,11 +1,11 @@
 # Capacitor Single SignOn
 
-[![npm](https://img.shields.io/npm/v/@teammaestro/capacitor-single-signon.svg)](https://www.npmjs.com/package/teammaestro/capacitor-single-signon)
-[![npm](https://img.shields.io/npm/dt/@teammaestro/capacitor-single-signon.svg?label=npm%20downloads)](https://www.npmjs.com/package/teammaestro/capacitor-single-signon)
+[![npm](https://img.shields.io/npm/v/@teamhive/capacitor-single-signon.svg)](https://www.npmjs.com/package/teamhive/capacitor-single-signon)
+[![npm](https://img.shields.io/npm/dt/@teamhive/capacitor-single-signon.svg?label=npm%20downloads)](https://www.npmjs.com/package/teamhive/capacitor-single-signon)
 
 ## Installation
 
-- `npm i @teammaestro/capacitor-single-signon`
+- `npm i @teamhive/capacitor-single-signon`
 
 ## Usage
 
@@ -41,7 +41,7 @@ You will need to comment the default intent filter
 ```
 
 ```ts
-import '@teammaestro/capacitor-single-signon';
+import '@teamhive/capacitor-single-signon';
 
 import { Plugins } from '@capacitor/core';
 const { SingleSignOn } = Plugins;

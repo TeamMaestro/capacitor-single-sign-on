@@ -4,6 +4,6 @@ demo/dist
 src/ios/Plugin/Pods/
 demo/android/app/src/main/assets
 src/dist
-src/android/@teammaestro/capacitor-single-signon/build
+src/android/@teamhive/capacitor-single-signon/build
 .idea
 *.tgz

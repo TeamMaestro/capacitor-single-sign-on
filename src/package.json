@@ -1,5 +1,5 @@
 {
-    "name": "@teammaestro/capacitor-single-signon",
+    "name": "@teamhive/capacitor-single-signon",
     "version": "2.0.0",
     "description": "This plugin is designed to streamline the single signon process between android and ios",
     "main": "dist/esm/index.js",
@@ -10,7 +10,7 @@
         "watch": "tsc --watch",
         "prepublishOnly": "npm run build"
     },
-    "author": "TeamMaestro",
+    "author": "TeamHive",
     "contributors": [
         "Osei Fortune",
         "John Pinkster",
@@ -28,7 +28,7 @@
         "dist/",
         "ios/",
         "android/",
-        "TeammaestroCapacitorSingleSignon.podspec"
+        "TeamhiveCapacitorSingleSignon.podspec"
     ],
     "keywords": [
         "capacitor",
@@ -48,9 +48,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/TeamMaestro/capacitor-single-sign-on"
+        "url": "https://github.com/TeamHive/capacitor-single-sign-on"
     },
     "bugs": {
-        "url": "https://github.com/TeamMaestro/capacitor-single-sign-on/issues"
+        "url": "https://github.com/TeamHive/capacitor-single-sign-on/issues"
     }
 }
