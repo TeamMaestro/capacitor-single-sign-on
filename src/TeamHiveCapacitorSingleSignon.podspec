@@ -1,7 +1,7 @@
 
   Pod::Spec.new do |s|
     s.name = 'TeamhiveCapacitorSingleSignon'
-    s.version = '2.0.0'
+    s.version = '2.0.1'
     s.summary = 'Single SignOn'
     s.license = 'MIT'
     s.homepage = 'https://github.com/TeamHive/capacitor-single-sign-on'
