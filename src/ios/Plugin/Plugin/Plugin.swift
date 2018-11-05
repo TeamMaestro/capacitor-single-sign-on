@@ -4,8 +4,8 @@ import SafariServices
 import AuthenticationServices
 
 typealias JSObject = [String:Any]
-@objc(SingleSignOnPlugin)
-public class SingleSignOnPlugin: CAPPlugin {
+@objc(SingleSignOn)
+public class SingleSignOn: CAPPlugin {
 
     private var session: Any?
 
