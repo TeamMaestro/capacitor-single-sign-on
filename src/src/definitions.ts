@@ -1,10 +1,10 @@
 declare global {
     interface PluginRegistry {
-        SingleSignOn?: SingleSignOnPlugin;
+        SingleSignOn?: SingleSignOn;
     }
 }
 
-export interface SingleSignOnPlugin {
+export interface SingleSignOn {
     authenticate(
         options: {
             url: string;

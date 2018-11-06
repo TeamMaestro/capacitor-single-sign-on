@@ -14,8 +14,8 @@ import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
 import net.openid.appauth.ResponseTypeValues;
 
-@NativePlugin(requestCodes = { SingleSignOnPlugin.SSO_REQUEST })
-public class SingleSignOnPlugin extends Plugin {
+@NativePlugin(requestCodes = { SingleSignOn.SSO_REQUEST })
+public class SingleSignOn extends Plugin {
     public static final int SSO_REQUEST = 868;
 
     @Override
@@ -28,7 +28,7 @@ public class SingleSignOnPlugin extends Plugin {
             return;
         }
 
-        if (requestCode == SingleSignOnPlugin.SSO_REQUEST) {
+        if (requestCode == SingleSignOn.SSO_REQUEST) {
             Uri url = data.getData();
             if (url != null) {
                 JSObject response = new JSObject();
@@ -54,7 +54,7 @@ public class SingleSignOnPlugin extends Plugin {
 
         AuthorizationService authService = new AuthorizationService(this.getContext());
         Intent authIntent = authService.getAuthorizationRequestIntent(request);
-        startActivityForResult(call, authIntent, SingleSignOnPlugin.SSO_REQUEST);
+        startActivityForResult(call, authIntent, SingleSignOn.SSO_REQUEST);
     }
 
 }
