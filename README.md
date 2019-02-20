@@ -14,30 +14,15 @@ This supports iOS SDK version 11+ (Important). The build will fail on SDK versio
 
 ### Android
 
-Add the following to your Android.manifest
+Make sure you have the `launchMode` on the `MainActivity` set to `singleTask`:
 
 ```xml
 <activity
-        android:name="net.openid.appauth.RedirectUriReceiverActivity"
-        tools:node="replace">
-    <intent-filter>
-        <action android:name="android.intent.action.VIEW"/>
-        <category android:name="android.intent.category.DEFAULT"/>
-        <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="yourCustomScheme"/>
-    </intent-filter>
-</activity>
-```
-
-You will need to comment the default intent filter
-
-```xml
-<intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="@string/custom_url_scheme" />
-</intent-filter>
+    android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
+    android:launchMode="singleTask"
+    android:name="com.my.app"
+    android:label="@string/title_activity_main"
+    android:theme="@style/AppTheme.NoActionBarLaunch">
 ```
 
 ```ts
