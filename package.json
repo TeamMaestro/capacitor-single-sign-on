@@ -1,6 +1,6 @@
 {
     "name": "@teamhive/capacitor-single-signon",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "description": "This plugin is designed to streamline the single signon process between android and ios",
     "main": "dist/esm/index.js",
     "types": "dist/esm/index.d.ts",
