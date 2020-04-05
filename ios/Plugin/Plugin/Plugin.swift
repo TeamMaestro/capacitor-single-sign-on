@@ -5,7 +5,12 @@ import AuthenticationServices
 
 typealias JSObject = [String:Any]
 @objc(SingleSignOn)
-public class SingleSignOn: CAPPlugin {
+public class SingleSignOn: CAPPlugin, ASWebAuthenticationPresentationContextProviding {
+    @available(iOS 12.0, *)
+    public func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        return UIApplication.shared.windows.first!;
+    }
+    
 
     private var session: Any?
 
@@ -24,6 +29,11 @@ public class SingleSignOn: CAPPlugin {
                     call.resolve(response)
                 }
             })
+            if #available(iOS 13.0, *) {
+                (self.session as! ASWebAuthenticationSession).presentationContextProvider = self
+            } else {
+                // Fallback on earlier versions
+            };
             (self.session as! ASWebAuthenticationSession).start()
         }
         else if #available(iOS 11.0, *) {
