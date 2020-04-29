@@ -3,10 +3,6 @@ package com.teamhive.capacitor.plugin;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.customtabs.CustomTabsClient;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.customtabs.CustomTabsServiceConnection;
-import android.support.customtabs.CustomTabsSession;
 import android.util.Log;
 
 import com.getcapacitor.JSObject;
@@ -15,6 +11,11 @@ import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.PluginRequestCodes;
+
+import androidx.browser.customtabs.CustomTabsClient;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.browser.customtabs.CustomTabsServiceConnection;
+import androidx.browser.customtabs.CustomTabsSession;
 
 @NativePlugin(requestCodes={PluginRequestCodes.BROWSER_OPEN_CHROME_TAB})
 public class SingleSignOn extends Plugin {
