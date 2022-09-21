@@ -23,15 +23,12 @@ npx cap sync
 ### authenticate(...)
 
 ```typescript
-authenticate(options: { url: string; customScheme?: string; }) => any
+authenticate(options: AuthenticateOptions): Promise<AuthenticateResponse>
 ```
 
-| Param         | Type                                                 |
-| ------------- | ---------------------------------------------------- |
-| **`options`** | <code>{ url: string; customScheme?: string; }</code> |
-
-**Returns:** <code>any</code>
-
---------------------
+| Interface | Type |
+| --- | --- |
+| **`AuthenticateOptions`** | <code>{ url: string; customScheme?: string; prefersEphemeralWebBrowserSession?: boolean }</code> |
+| **`AuthenticateResponse`** | <code>{ url: string; }</code> |
 
 </docgen-api>
