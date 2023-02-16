@@ -13,13 +13,14 @@ public class SingleSignOnPlugin: CAPPlugin, ASWebAuthenticationPresentationConte
            return UIApplication.shared.keyWindow!
         }
     }
-    
+
     private var session: Any?
 
     @objc func authenticate(_ call: CAPPluginCall) {
         let url = call.getString("url") ?? ""
         let scheme = call.getString("customScheme") ?? ""
-        
+        let prefersEphemeralWebBrowserSession = call.getBool("prefersEphemeralWebBrowserSession", false)
+
         if #available(iOS 12.0, *) {
             self.session = ASWebAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme, completionHandler: { url, error in
                 if (error != nil) {
@@ -32,6 +33,7 @@ public class SingleSignOnPlugin: CAPPlugin, ASWebAuthenticationPresentationConte
                 }
             })
             if #available(iOS 13.0, *) {
+                (self.session as! ASWebAuthenticationSession).prefersEphemeralWebBrowserSession = prefersEphemeralWebBrowserSession
                 (self.session as! ASWebAuthenticationSession).presentationContextProvider = self
             }
             (self.session as! ASWebAuthenticationSession).start()

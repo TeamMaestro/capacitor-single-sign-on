@@ -1,8 +1,13 @@
+interface AuthenticateOptions {
+    url: string;
+    customScheme?: string;
+    prefersEphemeralWebBrowserSession?: boolean;
+}
+
+interface AuthenticateResponse {
+    url: string;
+}
+
 export interface SingleSignOnPlugin {
-    authenticate(
-        options: {
-            url: string;
-            customScheme?: string;
-        }
-    ): Promise<{ url: string }>;
+    authenticate(options: AuthenticateOptions): Promise<AuthenticateResponse>;
 }
