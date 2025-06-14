@@ -4,35 +4,34 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
-
+import androidx.browser.customtabs.CustomTabsClient;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.browser.customtabs.CustomTabsServiceConnection;
+import androidx.browser.customtabs.CustomTabsSession;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 
-import androidx.browser.customtabs.CustomTabsClient;
-import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.browser.customtabs.CustomTabsServiceConnection;
-import androidx.browser.customtabs.CustomTabsSession;
-
 @CapacitorPlugin(name = "SingleSignOn")
 public class SingleSignOnPlugin extends Plugin {
+
     public static final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";
 
     private CustomTabsClient customTabsClient;
     private CustomTabsSession currentSession;
 
-    @PluginMethod()
+    @PluginMethod
     public void authenticate(PluginCall call) {
         String url = call.getString("url");
 
         if (url == null) {
-            call.error("Must provide a URL to open");
+            call.reject("Must provide a URL to open");
             return;
         }
         if (url.isEmpty()) {
-            call.error("URL must not be empty");
+            call.reject("URL must not be empty");
             return;
         }
 
@@ -40,16 +39,13 @@ public class SingleSignOnPlugin extends Plugin {
         open(url);
     }
 
-
     protected void open(String url) {
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder(getCustomTabsSession());
 
         CustomTabsIntent tabsIntent = builder.build();
-        tabsIntent.intent.putExtra(Intent.EXTRA_REFERRER,
-                Uri.parse(Intent.URI_ANDROID_APP_SCHEME + "//" + getContext().getPackageName()));
+        tabsIntent.intent.putExtra(Intent.EXTRA_REFERRER, Uri.parse(Intent.URI_ANDROID_APP_SCHEME + "//" + getContext().getPackageName()));
         tabsIntent.launchUrl(getContext(), Uri.parse(url));
     }
-
 
     CustomTabsServiceConnection connection = new CustomTabsServiceConnection() {
         @Override
@@ -59,13 +55,12 @@ public class SingleSignOnPlugin extends Plugin {
         }
 
         @Override
-        public void onServiceDisconnected(ComponentName name) {
-        }
+        public void onServiceDisconnected(ComponentName name) {}
     };
 
-    public void load() {
-    }
+    public void load() {}
 
+    @Override
     protected void handleOnResume() {
         boolean ok = CustomTabsClient.bindCustomTabsService(getContext(), CUSTOM_TAB_PACKAGE_NAME, connection);
         if (!ok) {
@@ -73,11 +68,12 @@ public class SingleSignOnPlugin extends Plugin {
         }
 
         if (getSavedCall() != null) {
-            getSavedCall().error("Login Unsuccessful");
+            getSavedCall().reject("Login Unsuccessful");
             saveCall(null);
         }
     }
 
+    @Override
     protected void handleOnPause() {
         getContext().unbindService(connection);
     }

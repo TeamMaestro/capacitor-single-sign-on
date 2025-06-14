@@ -3,29 +3,32 @@ import Capacitor
 import SafariServices
 import AuthenticationServices
 
-typealias JSObject = [String:Any]
+typealias JSObject = [String: Any]
 @objc(SingleSignOnPlugin)
 public class SingleSignOnPlugin: CAPPlugin, ASWebAuthenticationPresentationContextProviding {
 
     @available(iOS 12.0, *)
     public func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return DispatchQueue.main.sync {
-           return UIApplication.shared.keyWindow!
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let window = windowScene.windows.first else {
+                return UIWindow()
+            }
+            return window
         }
     }
-    
+
     private var session: Any?
 
     @objc func authenticate(_ call: CAPPluginCall) {
         let url = call.getString("url") ?? ""
         let scheme = call.getString("customScheme") ?? ""
-        
+
         if #available(iOS 12.0, *) {
             self.session = ASWebAuthenticationSession.init(url: URL(string: url)!, callbackURLScheme: scheme, completionHandler: { url, error in
-                if (error != nil) {
-                    call.reject("Error", error?.localizedDescription)
-                }
-                else {
+                if let error = error {
+                    call.reject("Error", error.localizedDescription)
+                } else {
                     var response = JSObject()
                     response["url"] = url?.absoluteString
                     call.resolve(response)
@@ -35,9 +38,8 @@ public class SingleSignOnPlugin: CAPPlugin, ASWebAuthenticationPresentationConte
                 (self.session as! ASWebAuthenticationSession).presentationContextProvider = self
             }
             (self.session as! ASWebAuthenticationSession).start()
-        }
-        else {
-            call.reject("Not supported")
+        } else {
+            call.reject("Not supported", "iOS version not supported")
         }
     }
 
