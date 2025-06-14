@@ -37,7 +37,7 @@ public class SingleSignOnPlugin: CAPPlugin, ASWebAuthenticationPresentationConte
             (self.session as! ASWebAuthenticationSession).start()
         }
         else {
-            call.error("Not supported")
+            call.reject("Not supported")
         }
     }
 
