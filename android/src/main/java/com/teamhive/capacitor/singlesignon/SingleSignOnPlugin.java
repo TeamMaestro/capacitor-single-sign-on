@@ -98,7 +98,7 @@ public class SingleSignOnPlugin extends Plugin {
             JSObject d = new JSObject();
             d.put("url", responseUri.toString());
             if (getSavedCall() != null) {
-                getSavedCall().success(d);
+                getSavedCall().resolve(d);
                 saveCall(null);
             }
         }
