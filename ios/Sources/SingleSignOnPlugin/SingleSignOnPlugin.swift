@@ -5,7 +5,12 @@ import AuthenticationServices
 
 typealias JSObject = [String: Any]
 @objc(SingleSignOnPlugin)
-public class SingleSignOnPlugin: CAPPlugin, ASWebAuthenticationPresentationContextProviding {
+public class SingleSignOnPlugin: CAPPlugin, ASWebAuthenticationPresentationContextProviding, CAPBridgedPlugin {
+    public let identifier = "SingleSignOnPlugin" 
+    public let jsName = "SingleSignOn" 
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "authenticate", returnType: CAPPluginReturnPromise),
+    ] 
 
     @available(iOS 12.0, *)
     public func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
