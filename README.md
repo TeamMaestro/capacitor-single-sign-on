@@ -1,11 +1,11 @@
-# @teamhive/capacitor-single-signon
+# @teammaestro/capacitor-single-sign-on
 
 This plugin is designed to streamline the single signon process between android and ios
 
 ## Install
 
 ```bash
-npm install @teamhive/capacitor-single-signon
+npm install @teammaestro/capacitor-single-sign-on
 npx cap sync
 ```
 

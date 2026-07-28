@@ -1,4 +1,4 @@
-package com.teamhive.capacitor.singlesignon;
+package com.teammaestro.capacitor.singlesignon;
 
 import android.content.ComponentName;
 import android.content.Intent;

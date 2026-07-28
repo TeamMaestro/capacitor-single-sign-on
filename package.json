@@ -1,6 +1,6 @@
 {
-    "name": "@teamhive/capacitor-single-signon",
-    "version": "7.0.1",
+    "name": "@teammaestro/capacitor-single-sign-on",
+    "version": "8.0.1",
     "description": "This plugin is designed to streamline the single signon process between android and ios",
     "main": "dist/plugin.cjs.js",
     "module": "dist/esm/index.js",
@@ -11,16 +11,19 @@
         "android/build.gradle",
         "dist/",
         "ios/Plugin/",
-        "TeamhiveCapacitorSingleSignon.podspec"
+        "TeammaestroCapacitorSingleSignOn.podspec"
     ],
     "author": "",
     "license": "MIT",
+    "publishConfig": {
+        "access": "restricted"
+    },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/TeamHive/capacitor-single-sign-on.git"
+        "url": "git+https://github.com/TeamMaestro/capacitor-single-sign-on.git"
     },
     "bugs": {
-        "url": "https://github.com/TeamHive/capacitor-single-sign-on/issues"
+        "url": "https://github.com/TeamMaestro/capacitor-single-sign-on/issues"
     },
     "keywords": [
         "capacitor",
@@ -44,10 +47,10 @@
         "prepublishOnly": "npm run build"
     },
     "devDependencies": {
-        "@capacitor/android": "^7.3.0",
-        "@capacitor/core": "^7.3.0",
+        "@capacitor/android": "^8.0.0",
+        "@capacitor/core": "^8.0.0",
         "@capacitor/docgen": "^0.0.10",
-        "@capacitor/ios": "^7.3.0",
+        "@capacitor/ios": "^8.0.0",
         "@ionic/eslint-config": "^0.3.0",
         "@ionic/prettier-config": "^1.0.1",
         "@ionic/swiftlint-config": "^1.1.2",
@@ -60,7 +63,7 @@
         "typescript": "~4.0.3"
     },
     "peerDependencies": {
-        "@capacitor/core": "^7.3.0"
+        "@capacitor/core": ">=8.0.0"
     },
     "prettier": "@ionic/prettier-config",
     "swiftlint": "@ionic/swiftlint-config",

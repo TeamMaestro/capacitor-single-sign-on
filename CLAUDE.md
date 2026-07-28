@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Capacitor plugin (@teamhive/capacitor-single-signon) that provides single sign-on (SSO) functionality for mobile applications. It uses ASWebAuthenticationSession on iOS and Chrome Custom Tabs on Android to handle OAuth/SSO authentication flows.
+This is a Capacitor plugin (@teammaestro/capacitor-single-sign-on) that provides single sign-on (SSO) functionality for mobile applications. It uses ASWebAuthenticationSession on iOS and Chrome Custom Tabs on Android to handle OAuth/SSO authentication flows.
 
 ## Common Commands
 
@@ -37,7 +37,7 @@ The plugin exposes a single `authenticate()` method that:
 - `src/definitions.ts` - Plugin interface definition
 - `src/index.ts` - Web implementation and plugin registration
 - `ios/Plugin/SingleSignOnPlugin.swift` - iOS native implementation
-- `android/src/main/java/com/teamhive/capacitor/singlesignon/SingleSignOnPlugin.java` - Android native implementation
+- `android/src/main/java/com/teammaestro/capacitor/singlesignon/SingleSignOnPlugin.java` - Android native implementation
 
 ### Platform Requirements
 - iOS 12+ (uses ASWebAuthenticationSession)
